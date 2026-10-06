@@ -9,11 +9,12 @@ type ButtonNavigationProps = {
 
 export function ButtonNavigation({ children, description, href, onclick }: ButtonNavigationProps) {
     return (
-        <button onClick={onclick} className="p-8 font-mono d-flex flex-col gap-5">
-            <Link href={href} className="text-9xl">
+        <button onClick={onclick} className="font-mono d-flex flex-col items-stretch w-full">
+            <Link href={href} className="block text-7xl p-8 pb-10 bg-white hover:bg-gray-300 hover:cursor-pointer rounded-2xl w-full">
                 {children}
             </Link>
-            <p>{description}</p>
+            <p className="mt-5 self-start">{description}</p>
         </button>
+
     )
 }

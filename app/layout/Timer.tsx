@@ -1,32 +1,12 @@
-import { useEffect, useRef } from "react"
 
-type TimerProps = {
+type PropsTimer = {
     minutes: number
     seconds: number
 }
 
-export function Timer({minutes, seconds}: TimerProps) {
-
-    const min = useRef(minutes)
-    const seg = useRef(seconds)
-
-    useEffect(() => {
-        const interval = setInterval(() => {
-            if (minutes !== 0 && seconds !== 0) {
-                if (seconds <= 1) {
-                    min.current --
-                    seg.current = 60
-                }
-                seg.current --
-
-                localStorage.setItem("minutes", String(min.current))
-                localStorage.setItem("seconds", String(seg.current))
-
-            } else clearInterval(interval)
-        }, 1000)
-    }, [minutes, seconds])
+export function Timer({ minutes, seconds }: PropsTimer) {
 
     return (
-        <div className="text-center m-[2em]">{minutes} : {seconds}</div>
+        <div className="text-center p-5 pb-0 font-mono text-7xl text-blue-500 tabular-nums">{String(minutes).padStart(2, "0")}:{String(seconds).padStart(2, "0")}</div>
     )
 }
