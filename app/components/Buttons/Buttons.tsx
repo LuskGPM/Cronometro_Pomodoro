@@ -3,6 +3,8 @@
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
+import "./Buttons.css"
+
 export function ButtonToggle() {
 
     const [href, setHref] = useState<string>()
@@ -30,7 +32,7 @@ export function ButtonToggle() {
     }
 
     return (
-        <button onClick={toggle}>
+        <button onClick={toggle} className="button">
             <svg width="35" height="35">
                 <use href={href} />
             </svg>
@@ -43,12 +45,26 @@ type PropsLinkButton = {
     hrefSvg: string
 } & React.ComponentProps<'svg'>
 
-export function LinkButton({hrefLink, width = 35, height = 35, hrefSvg}: PropsLinkButton) {
+export function LinkButton({ hrefLink, width = 35, height = 35, hrefSvg }: PropsLinkButton) {
     return (
-        <Link href={hrefLink}>
+        <Link href={hrefLink} className="button">
             <svg width={width} height={height}>
                 <use href={hrefSvg} />
             </svg>
         </Link>
+    )
+}
+
+type PropsToggleStateButton = {
+    corBorder: string
+} & React.ComponentProps<'button'> & React.ComponentProps<"svg">
+
+export function ToggleStateButton({ corBorder, href, width, height, ...props }: PropsToggleStateButton) {
+    return (
+        <button {...props} className={"button mt-5 p-2 rounded-xl w-56 flex justify-center border-3 " + corBorder}>
+            <svg width={width} height={height}>
+                <use href={href} />
+            </svg>
+        </button>
     )
 }

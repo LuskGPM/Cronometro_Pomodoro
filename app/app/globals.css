@@ -31,15 +31,3 @@ body {
     border-radius: 1rem;
   }
 }
-
-a,
-button {
-  color: var(--background);
-  background-color: var(--foreground);
-
-  &:hover {
-    cursor: pointer;
-    background-color: var(--hover-btn);
-    box-shadow: 2px 2px 5px black;
-  }
-}

@@ -1,5 +1,6 @@
 'use client'
 
+import { ToggleStateButton } from "@/components/Buttons/Buttons";
 import { Cycles } from "@/components/Cycles/Cycles";
 import { InputDefault } from "@/components/InputDefaul/InputDefault";
 import { useState } from "react";
@@ -21,13 +22,12 @@ export default function Home() {
       </section>
       <section id="ciclos-button" className="flex flex-col gap-5 mt-5 items-center">
         <Cycles />
-        <button className="mt-5 text-background p-2 rounded-xl w-56 flex justify-center" onClick={() => {
-          setRodando(!rodando)
-        }} aria-label="Parar / Começar">
-          <svg width="30" height="30">
-            <use href={rodando ? "/stop.svg#stop" : "/play.svg#play"} />
-          </svg>
-        </button>
+        <ToggleStateButton
+          width={30}
+          height={30}
+          href={rodando ? "/stop.svg#stop" : "/play.svg#play"}
+          corBorder={rodando ? "border-emerald-700" : "border-red-700"}
+          onClick={() => { setRodando(!rodando) }} />
       </section>
     </main>
   );
