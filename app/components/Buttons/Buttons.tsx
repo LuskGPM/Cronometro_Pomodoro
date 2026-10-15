@@ -56,12 +56,13 @@ export function LinkButton({ hrefLink, width = 35, height = 35, hrefSvg }: Props
 }
 
 type PropsToggleStateButton = {
-    corBorder: string
+    corBorder: "red" | "green"
 } & React.ComponentProps<'button'> & React.ComponentProps<"svg">
 
 export function ToggleStateButton({ corBorder, href, width, height, ...props }: PropsToggleStateButton) {
+    console.log(corBorder)
     return (
-        <button {...props} className={"button mt-5 p-2 rounded-xl w-56 flex justify-center border-3 " + corBorder}>
+        <button {...props} className={`button mt-5 p-2 rounded-xl w-56 flex justify-center ${corBorder}`}>
             <svg width={width} height={height}>
                 <use href={href} />
             </svg>

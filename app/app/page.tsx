@@ -26,7 +26,7 @@ export default function Home() {
           width={30}
           height={30}
           href={rodando ? "/stop.svg#stop" : "/play.svg#play"}
-          corBorder={rodando ? "border-emerald-700" : "border-red-700"}
+          corBorder={rodando ? "green" : "red"}
           onClick={() => { setRodando(!rodando) }} />
       </section>
     </main>

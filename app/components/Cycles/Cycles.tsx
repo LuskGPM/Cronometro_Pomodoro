@@ -1,5 +1,5 @@
 import { JSX } from "react/jsx-runtime"
-import "./Cycles.module.css"
+import "./Cycles.css"
 
 export function Cycles() {
     const cycles = 8

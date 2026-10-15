@@ -30,4 +30,10 @@ body {
     padding: 10px;
     border-radius: 1rem;
   }
+
+  footer {
+    a:hover {
+      text-decoration-line: underline; 
+    }
+  }
 }

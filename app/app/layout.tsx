@@ -41,6 +41,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           </div>
         </header>
         {children}
+        <footer className="mt-20 mb-10 flex flex-col gap-5 items-center">
+          <a href="">Entenda a Técnica de Pomodoro</a>
+          <a href="/">Timer - Pomodoro &copy; 2026 - Por Lucas Melo</a>
+        </footer>
       </body>
     </html>
   );
