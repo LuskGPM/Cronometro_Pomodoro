@@ -1,12 +1,13 @@
 @import "tailwindcss";
 
+
 :root {
   --background: var(--color-white);
   --foreground: var(--color-gray-800);
   --hover-btn: var(--color-gray-600)
 }
 
-.dark {
+[data-theme="dark"] {
   --background: var(--color-gray-800);
   --foreground: var(--color-white);
   --hover-btn: var(--color-gray-200)
@@ -19,11 +20,14 @@
   --font-mono: var(--font-geist-mono);
 }
 
+* {
+  scrollbar-width: none;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
-
 
   .header a,
   .header button {
@@ -33,7 +37,7 @@ body {
 
   footer {
     a:hover {
-      text-decoration-line: underline; 
+      text-decoration-line: underline;
     }
   }
 }

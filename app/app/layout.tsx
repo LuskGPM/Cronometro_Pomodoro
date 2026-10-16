@@ -1,7 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import Link from "next/link";
 import { ButtonToggle, LinkButton } from "@/components/Buttons/Buttons";
 
 const geistSans = Geist({
@@ -34,9 +33,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
             <h1 className="text-2xl">Pomodoro - Timer</h1>
           </div>
           <div className="flex gap-5 self-center">
-            <LinkButton hrefLink="/" hrefSvg="/home.svg#home"/>
-            <LinkButton hrefLink="/" hrefSvg="/history.svg#history"/>
-            <LinkButton hrefLink="/" hrefSvg="/settings.svg#settings"/>
+            <LinkButton hrefLink="/" hrefSvg="/home.svg#home" />
+            <LinkButton hrefLink="/" hrefSvg="/history.svg#history" />
+            <LinkButton hrefLink="/" hrefSvg="/settings.svg#settings" />
             <ButtonToggle />
           </div>
         </header>

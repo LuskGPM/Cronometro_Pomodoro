@@ -7,34 +7,32 @@ import "./Buttons.css"
 
 export function ButtonToggle() {
 
-    const [href, setHref] = useState<string>()
+    const [theme, setTheme] = useState<"dark" | "light">("dark")
 
     useEffect(() => {
-        const theme = localStorage.getItem("theme")
-        document.documentElement.classList.add(theme || "light")
-
-        if (theme === "dark") setHref("/sun.svg#sun")
-        else setHref("/moon.svg#moon")
+        const themeLocal = localStorage.getItem("theme")
+        if (themeLocal === "dark" || themeLocal === "light") {
+            setTheme(themeLocal)
+            console.log("thema do effect: ", themeLocal)
+        }
     }, [])
 
-    function toggle() {
-        const docClass: DOMTokenList = document.documentElement.classList
-        docClass.toggle("dark")
+    useEffect(() => {
+        document.documentElement.setAttribute("data-theme", theme)
+    }, [theme])
 
-        if (docClass.contains("dark")) {
-            localStorage.setItem("theme", "dark")
-            setHref("/sun.svg#sun")
-        }
-        else {
-            localStorage.setItem("theme", "light")
-            setHref("/moon.svg#moon")
-        }
+    function toggleTheme() {
+        setTheme(prevTheme => {
+            const nextTheme = prevTheme === "dark" ? "light" : "dark"
+            localStorage.setItem("theme", nextTheme)
+            return nextTheme
+        })
     }
 
     return (
-        <button onClick={toggle} className="button">
+        <button onClick={toggleTheme} className="button">
             <svg width="35" height="35">
-                <use href={href} />
+                <use href={theme === "dark" ? "/sun.svg#sun" : "/moon.svg#moon"} />
             </svg>
         </button>
     )
