@@ -1,0 +1,269 @@
+/* ================================================================= *
+ * VARIÁVEIS DE CONFIGURAÇÃO (Design Tokens)                         *
+ * ================================================================= */
+:root {
+    --primary-color: var(--foreground);
+    /* Azul principal */
+    --primary-hover: var(--hover-btn);
+    /* Azul escuro para hover */
+    --text-color: var(--foreground);
+    /* Cor padrão do texto */
+    --text-muted: #6b7280;
+    /* Cor secundária/suave */
+    --bg-table-header: var(--background);
+    /* Fundo do cabeçalho da tabela */
+    --bg-table-stripe: var(--background);
+    /* Fundo zebrado das linhas */
+    --border-color: var(--foreground);
+    /* Cor padrão de bordas */
+    --radius: 8px;
+    /* Arredondamento padrão */
+
+    /* Tipografia */
+    --font-heading: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    --font-body: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ================================================================= *
+ * 1. FORMATAÇÃO DE LISTAS (<ul> e <ol>)                             *
+ * ================================================================= */
+
+/* Lista de marcadores padrão (ul) personalizada */
+ul.custom-list {
+    list-style: none;
+    /* Remove os marcadores padrão */
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+ul.custom-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Criação de um marcador personalizado moderno (ícone de check/ponto) */
+ul.custom-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+/* Lista numerada elegante (<ol>) */
+ol.custom-ordered {
+    list-style: none;
+    counter-reset: item-counter;
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+ol.custom-ordered li {
+    counter-increment: item-counter;
+    position: relative;
+    padding-left: 2.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Número personalizado com estilo de badge */
+ol.custom-ordered li::before {
+    content: counter(item-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--bg-table-header);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ================================================================= *
+ * 2. FORMATAÇÃO DE TABELAS (<table>)                                *
+ * ================================================================= */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    /* Garante responsividade em telas pequenas */
+    margin: 1.5rem 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+    color: var(--background);
+    background-color: var(--foreground);
+}
+
+/* Cabeçalho da Tabela */
+.styled-table th {
+    background-color: var(--bg-table-header);
+    color: var(--text-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    padding: 0.875rem 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+/* Células da Tabela */
+.styled-table td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Efeito Zebrado (linhas alternadas) */
+.styled-table tbody tr:nth-child(even) {
+    background-color: var(--bg-table-stripe);
+    color: var(--foreground);
+}
+
+/* Efeito Hover nas linhas */
+.styled-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.styled-table tbody tr:hover {
+    background-color: var(--foreground);
+    /* Azul bem suave ao passar o mouse */
+    color: var(--background);
+}
+
+/* Remove a borda da última linha para acabamento limpo */
+.styled-table tbody tr:last-child td {
+    border-bottom: none;
+}
+
+p {
+    font-family: var(--font-body);
+    font-size: 1rem;
+    /* 16px por padrão */
+    line-height: 1.7;
+    /* Entrelinha espaçada para evitar fadiga visual */
+    color: var(--text-body);
+    margin-top: 0;
+    margin-bottom: 1.25rem;
+    /* Ritmo vertical consistente */
+    max-width: 70ch;
+    /* Comprimento ideal de linha para leitura (entre 65-75 caracteres) */
+}
+
+/* Parágrafo de destaque (Primeiro parágrafo / Lead paragraph) */
+p.lead {
+    font-size: 1.2rem;
+    line-height: 1.6;
+    color: var(--text-heading);
+    font-weight: 400;
+}
+
+/* Parágrafos secundários / Legendas */
+p.small,
+small {
+    font-size: 0.875rem;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+/* Destaque de texto em negrito e itálico */
+strong,
+b {
+    color: var(--text-heading);
+    font-weight: 600;
+}
+
+/* ================================================================= *
+ * 2. FORMATAÇÃO DE TÍTULOS (<h1> - <h6>)                             *
+ * ================================================================= */
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-heading);
+    color: var(--text-heading);
+    font-weight: 700;
+    line-height: 1.25;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+    text-wrap: balance;
+    /* Evita palavras isoladas no final de títulos (suportado em navegadores modernos) */
+}
+
+/* h1: Título Principal */
+h1 {
+    font-size: 2.25rem;
+    /* 36px */
+    letter-spacing: -0.025em;
+    /* Espaçamento sutil para elegância em títulos grandes */
+    margin-top: 0;
+    /* Sem margem superior se for o primeiro elemento */
+}
+
+/* h2: Seções Principais (com detalhe visual lateral) */
+h2 {
+    font-size: 1.75rem;
+    /* 28px */
+    letter-spacing: -0.02em;
+    padding-left: 0.75rem;
+    border-left: 4px solid var(--accent-color);
+    /* Barra lateral de destaque */
+}
+
+/* h3: Subseções */
+h3 {
+    font-size: 1.35rem;
+    /* ~21px */
+    font-weight: 600;
+}
+
+/* h4, h5, h6: Níveis de detalhe e agrupamento interno */
+h4 {
+    font-size: 1.15rem;
+    /* ~18px */
+    font-weight: 600;
+}
+
+h5 {
+    font-size: 1rem;
+    /* 16px */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--text-muted);
+}
+
+h6 {
+    font-size: 0.875rem;
+    /* 14px */
+    font-weight: 600;
+    color: var(--text-muted);
+}
+
+/* Ajustes de margem quando um título vem imediatamente após o outro */
+h1+h2,
+h2+h3,
+h3+h4 {
+    margin-top: 0.75rem;
+}

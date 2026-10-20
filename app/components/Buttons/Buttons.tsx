@@ -58,7 +58,6 @@ type PropsToggleStateButton = {
 } & React.ComponentProps<'button'> & React.ComponentProps<"svg">
 
 export function ToggleStateButton({ corBorder, href, width, height, ...props }: PropsToggleStateButton) {
-    console.log(corBorder)
     return (
         <button {...props} className={`button mt-5 p-2 rounded-xl w-56 flex justify-center ${corBorder}`}>
             <svg width={width} height={height}>
