@@ -1,0 +1,151 @@
+/* ================================================================= *
+ * VARIÁVEIS DE CONFIGURAÇÃO (Design Tokens)                         *
+ * ================================================================= */
+:root {
+    --primary-color: var(--foreground);
+    /* Azul principal */
+    --primary-hover: var(--hover-btn);
+    /* Azul escuro para hover */
+    --text-color: var(--foreground);
+    /* Cor padrão do texto */
+    --text-muted: #6b7280;
+    /* Cor secundária/suave */
+    --bg-table-header: var(--background);
+    /* Fundo do cabeçalho da tabela */
+    --bg-table-stripe: var(--background);
+    /* Fundo zebrado das linhas */
+    --border-color: var(--foreground);
+    /* Cor padrão de bordas */
+    --radius: 8px;
+    /* Arredondamento padrão */
+}
+
+/* ================================================================= *
+ * 1. FORMATAÇÃO DE LISTAS (<ul> e <ol>)                             *
+ * ================================================================= */
+
+/* Lista de marcadores padrão (ul) personalizada */
+ul.custom-list {
+    list-style: none;
+    /* Remove os marcadores padrão */
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+ul.custom-list li {
+    position: relative;
+    padding-left: 1.75rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Criação de um marcador personalizado moderno (ícone de check/ponto) */
+ul.custom-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.5rem;
+    width: 8px;
+    height: 8px;
+    background-color: var(--primary-color);
+    border-radius: 50%;
+}
+
+/* Lista numerada elegante (<ol>) */
+ol.custom-ordered {
+    list-style: none;
+    counter-reset: item-counter;
+    padding-left: 0;
+    margin: 1.5rem 0;
+}
+
+ol.custom-ordered li {
+    counter-increment: item-counter;
+    position: relative;
+    padding-left: 2.25rem;
+    margin-bottom: 0.75rem;
+    color: var(--text-color);
+    line-height: 1.6;
+}
+
+/* Número personalizado com estilo de badge */
+ol.custom-ordered li::before {
+    content: counter(item-counter);
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: var(--bg-table-header);
+    color: var(--primary-color);
+    font-weight: 700;
+    font-size: 0.85rem;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* ================================================================= *
+ * 2. FORMATAÇÃO DE TABELAS (<table>)                                *
+ * ================================================================= */
+
+.table-container {
+    width: 100%;
+    overflow-x: auto;
+    /* Garante responsividade em telas pequenas */
+    margin: 1.5rem 0;
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.95rem;
+    color: var(--background);
+    background-color: var(--foreground);
+}
+
+/* Cabeçalho da Tabela */
+.styled-table th {
+    background-color: var(--bg-table-header);
+    color: var(--text-color);
+    font-weight: 600;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.05em;
+    padding: 0.875rem 1rem;
+    border-bottom: 2px solid var(--border-color);
+}
+
+/* Células da Tabela */
+.styled-table td {
+    padding: 0.875rem 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+/* Efeito Zebrado (linhas alternadas) */
+.styled-table tbody tr:nth-child(even) {
+    background-color: var(--bg-table-stripe);
+    color: var(--foreground);
+}
+
+/* Efeito Hover nas linhas */
+.styled-table tbody tr {
+    transition: background-color 0.2s ease;
+}
+
+.styled-table tbody tr:hover {
+    background-color: var(--foreground);
+    /* Azul bem suave ao passar o mouse */
+    color: var(--background);
+}
+
+/* Remove a borda da última linha para acabamento limpo */
+.styled-table tbody tr:last-child td {
+    border-bottom: none;
+}
